@@ -1,0 +1,8 @@
+.Home__rank{padding:24px 20px; font-family:'Times New Roman'}
+.Home__news{font-size:18px; font-weight:400; padding:24px 0; color:$gray111}
+
+.CardView__wrap .swiper .swiper-pagination{
+  bottom:32px;
+  .swiper-pagination-bullet{width:5px; height:5px; border-radius:50px; background-color:$grayc}
+  .swiper-pagination-bullet-active{background-color:$mainColor; box-shadow:2px 2px 5px #ff0000}
+}

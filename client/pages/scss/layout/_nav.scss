@@ -1,0 +1,12 @@
+.Nav{display:flex; position: relative;}
+.Nav::after{width:100%; height:1px; content:""; position:absolute; left:0; bottom:0; border-bottom:1px solid $grayf0;}
+.Nav__list{width:25%; text-align:center; font-size:18px; font-family:'roboto';}
+.Nav__list a{display:block; line-height:40px;}
+.Nav__list a:hover .Nav__list--item{color: $accentColor; position:relative; transition: all ease 0.3s; line-height:22px;}
+.Nav__list--item{color: $gray7;}
+
+.Nav__list--item::after{width:0; height:2px; content:''; display:block; position:absolute; bottom:-5px; left:0; background-color:$accentColor; transition:all ease 0.3s}
+// .Nav__list a:hover .Nav__list--item::after{width:100%; height:2px; content:''; display:block; position:absolute; bottom:-5px; left:0; background-color:$accentColor;}
+
+.Nav__list--active-item{color: $mainColor; position:relative;}
+//.Nav__list--active-item::after{width:100%; height:2px; content:''; display:block; position:absolute; bottom:-5px; left:0; background-color:$mainColor;}

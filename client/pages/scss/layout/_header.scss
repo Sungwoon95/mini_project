@@ -1,0 +1,12 @@
+.Header{height:60px; display:flex; justify-content:space-between; align-items:center}
+
+.Header__logo{display:flex; align-items:center;}
+.Header__logo--image{width:28px; height:28px; background-color:$mainColor}
+
+.Header__about{display:flex; align-items:center;}
+
+.Header__about--theme-icons{width:20px; height:20px; border-radius:50px; background-color:$mainColor; transition:all ease 0.3s; position:relative}
+.Header__about--theme-icons::after{width:60%; height:60%; content:""; display:block; background-color:$white; border-radius:50px; top:-50%; left:-50%; position:absolute;}
+.Header__about--theme-icons:hover::after{top:0; left:0; transition:all ease 0.3s}
+.Header__about--theme-icons:hover{background-color:#f7f589}
+.Header__about--descript .material-icons{display:block}

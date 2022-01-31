@@ -1,0 +1,18 @@
+.CardView__wrap{display:flex; overflow:auto;  background-color:$backColor;}
+.CardView{display:flex; flex-direction:column; justify-content:space-between; 
+  box-shadow:10px 10px 30px #0f296b12, -10px -10px 30px #ffffff; width:100%;
+  border-radius:20px; padding:16px 20px; font-family:"Roboto", sans-serif; background-image:linear-gradient(#E8EBF2,#ffffff);
+box-sizing: border-box;}
+
+.CardView__main{padding:50px 0;}
+
+.CardView__rank{color:$mainColor; font-style: italic; font-size: 28px; line-height: 1; font-weight: 400;}
+.CardView__title{font-size:18px; color:$gray7; font-weight:500;  margin:12px 0px; line-height: 24px;
+overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp:4; max-height:96px;}
+.CardView__info{padding-top:10px; font-size:12px; line-height: 16px;}
+.CardView__info--user{color:$gray7; text-align: center;}
+.CardView__info--option{display:flex;}
+.CardView__info--option-comment{color:$mainColor}
+
+.CardView__wrap .swiper-wrapper{align-items: center;}
+.CardView__wrap .swiper-slide{padding:50px 80px 80px; box-sizing:border-box; display: flex; align-items: center;}
