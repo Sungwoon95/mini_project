@@ -1,5 +1,7 @@
 import React,{useState} from 'react';
 import Modal from './Modal.js'
+
+import Link from 'next/link'
 //import Backdrop from '../shared/Backdrop'
 
 const PageDetail = ({ms: {id,by, title, kids, time, url, descendants, score} , idx}) => {
@@ -37,7 +39,9 @@ const PageDetail = ({ms: {id,by, title, kids, time, url, descendants, score} , i
   // const contentTime = new Date(time*1000).toLocaleString("ko-KR")
   return(
       <div className="PageDetail">
-        <div className="PageDetail__number">
+        <Link href = {`/article/${id}`}>
+          <a>
+          <div className="PageDetail__number">
           <span className='PageDetail__rank'>
             {idxNum}
           </span>
@@ -46,23 +50,24 @@ const PageDetail = ({ms: {id,by, title, kids, time, url, descendants, score} , i
           </span>
         </div>
         <h3 className="PageDetail__title">{title}</h3>
+          </a>
+        </Link>
         <div className="PageDetail__info">
-          <button onClick={openModal}>
-          <p className="PageDetail__info--user">
+          <p onClick={openModal} className="PageDetail__info--user">
             {by}
             <span class="material-icons">
-              navigate_next
+              link
             </span>
-            {id}
           </p>
-          </button>
+          <Link href = {`/article/${id}`}>
           <div className="PageDetail__info--option">
+            <div className="PageDetail__info--option-fill" />
             <p className="PageDetail__info--option-comment">{descendants}</p>
             <p className="PageDetail__info--option-score">{score}</p>
           </div>
+          </Link>
         </div>
         {isOpen && <Modal userName={by} onClick={closeModal}/>}
-        {/* <p>{url}</p> */}
       </div>
   )
 }

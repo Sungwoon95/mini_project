@@ -17,6 +17,7 @@
     "swiper": "^7.4.1"
   },
   "devDependencies": {
+    "@svgr/webpack": "^6.2.1",
     "webpack": "^5.66.0"
   }
 }

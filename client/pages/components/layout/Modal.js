@@ -1,4 +1,5 @@
 import React, {useState,useEffect} from 'react';
+import ReactDOM from 'react-dom'
 import APIfetcher from '../../../APIfetcher'
 import Backdrop from '../shared/Backdrop';
 
@@ -34,7 +35,7 @@ const Modal = ({userName, onClick}) => {
     }
   }
 
-  return(
+  return ReactDOM.createPortal(
     <div className="UserModal">
       <Backdrop onClick={onClick} />
       <p className='UserModal__name'>{user.id}</p>
@@ -109,7 +110,8 @@ const Modal = ({userName, onClick}) => {
       </div>
       <div onClick={onClick} className='UserModal__top--bar ' />
       <div onClick={onClick} className='UserModal__bottom--bar' />
-    </div>
+    </div>,
+    document.querySelector('#userModal')
   )
 }
 

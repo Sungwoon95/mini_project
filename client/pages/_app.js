@@ -3,6 +3,7 @@ import './scss/main.scss'
 import HeadTag from './components/Head'
 import Header from './components/layout/Header'
 import Nav from './components/layout/Nav'
+import {ThemeProvider} from './contexts/theme'
 
 const App = ({Component, pageProps}) => 
   {
@@ -10,10 +11,13 @@ const App = ({Component, pageProps}) =>
     return(
     <>
       <HeadTag />
-      <Header />
-      <Nav />
-      <div id='backdrop' />
-      <Component {...pageProps}/>
+      <ThemeProvider>
+        <Header />
+        <Nav />
+        <div id='backdrop' />
+        <div id='userModal' />
+        <Component {...pageProps}/>
+      </ThemeProvider>
     </>
     
   )

@@ -4,7 +4,7 @@ import {useRouter} from 'next/router'
 // import Page from './Page';
 // import {dataFetcher} from '../../../dataFetcher'
 
-const PageView = ({ms: {id=null,by, title, kids, time, url, descendants, score}, idx}) => {
+const PageView = ({ms: {id,by, title, kids, time, url, descendants, score}, idx}) => {
   const router = useRouter();
   const idxNum = ('00' + idx).slice(-3)
   

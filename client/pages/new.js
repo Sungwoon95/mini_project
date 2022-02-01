@@ -1,18 +1,20 @@
-import React,{useState,useEffect, useRef} from 'react'
+import React,{useState,useEffect, useRef, useContext} from 'react'
 import {dataFetcher} from '../dataFetcher'
 import APIfetcher from '../APIfetcher'
 import PageView from './components/layout/pageView'
 import PageDetail from './components/layout/pageDetail'
 import Sort from './components/layout/Sort'
 import useInfiniteScroll from './hooks/useInfiniteScroll'
+import {ThemeContext} from './contexts/theme.js'
+
 const New = () => {
-  //const {loadContent, isLoading} = dataFetcher("new",5)
+  const [{theme, isDark}, toggleTheme] = useContext(ThemeContext);
   const [content, setContent] = useState([])
   const [endScroll, setEndScroll] = useState(true)
   const fetchMore = useRef(null)
   const intersecting = useInfiniteScroll(fetchMore)
-  
   const [pageType, setPageType] = useState(true);
+  const [isLoading,setIsLoading] = useState(false);
 
   const toggleView = () => {
     setPageType(!pageType)
@@ -26,12 +28,12 @@ const New = () => {
         setEndScroll(false)
       }
     setContent(content=>[...content,...newContents])
+    setIsLoading(true);
   }
   useEffect (() => {
     if(intersecting && endScroll) getContent()
-    console.log(intersecting)
 
-  },[intersecting])
+  },[intersecting,content])
   return(
   <div className="container">
     <Sort />
@@ -47,13 +49,18 @@ const New = () => {
     <button onClick={toggleView}>
         {pageType? "자세히" :"일반"}
       </button>
-    {pageType? content.map((item,idx)=>(
+    {!isLoading 
+    ? 
+    '로딩중임미다.'
+    :
+    (pageType? content.map((item,idx)=>(
       <PageDetail key={idx} ms={item} idx={idx+1}/>
       )):
       content.map((item,idx)=>(
         <PageView key={idx} ms={item} idx={idx+1}/>
-        ))
+        )))
       }
+    
     <div ref={fetchMore} />
   </div>
   )
