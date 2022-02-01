@@ -1,12 +1,45 @@
-.Header{height:60px; display:flex; justify-content:space-between; align-items:center}
+.Light_Header{height:60px; display:flex; justify-content:space-between; align-items:center; transition:all ease 0.3s; padding: 0 20px;
+  .Header__logo{display:flex; align-items:center;
+    .Header__logo--image{
+      .Header__logo--image-svg{}
+    }
+    .Header__logo--title{padding-left:8px; font-size:14px; line-height:16px; font-weight:500; font-style:italic; color:$gray50}
+  }
+  .Header__about{display:flex; align-items:center;
+    .Header__about--theme{width:32px; height:32px; position:relative; top:0; left:0;
+      .Header__theme--image-svg{position: absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+        &:hover{}
+      }
+    }
+    .Header__about--descript{
+      width:32px; height:32px; position:relative; top:0; left:0;
+      .Header__about--image-svg{position: absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+        &:hover{}
+      }
+    } 
+  }
+}
 
-.Header__logo{display:flex; align-items:center;}
-.Header__logo--image{width:28px; height:28px; background-color:$mainColor}
-
-.Header__about{display:flex; align-items:center;}
-
-.Header__about--theme-icons{width:20px; height:20px; border-radius:50px; background-color:$mainColor; transition:all ease 0.3s; position:relative}
-.Header__about--theme-icons::after{width:60%; height:60%; content:""; display:block; background-color:$white; border-radius:50px; top:-50%; left:-50%; position:absolute;}
-.Header__about--theme-icons:hover::after{top:0; left:0; transition:all ease 0.3s}
-.Header__about--theme-icons:hover{background-color:#f7f589}
-.Header__about--descript .material-icons{display:block}
+.Dark_Header{height:60px; display:flex; justify-content:space-between; align-items:center; transition:all ease 0.3s; padding: 0 20px; background-color:$gray222;
+  .Header__logo{display:flex; align-items:center;
+    .Header__logo--image{
+      .Header__logo--image-svg{
+        path{stroke:$white;}
+      }
+    }
+    .Header__logo--title{padding-left:8px; font-size:14px; line-height:16px; font-weight:500; font-style:italic; color:$graycf}
+  }
+  .Header__about{display:flex; align-items:center;
+    .Header__about--theme{width:32px; height:32px; position:relative; top:0; left:0;
+      .Header__theme--image-svg{position: absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+        &:hover{}
+      }
+    }
+    .Header__about--descript{
+      width:32px; height:32px; position:relative; top:0; left:0;
+      .Header__about--image-svg{position: absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+        &:hover{}
+      }
+    } 
+  }
+}
