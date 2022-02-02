@@ -2,18 +2,19 @@ import {useState, useEffect} from 'react'
 import {useRouter} from 'next/router'
 import APIfetcher from '../../APIfetcher'
 
+import Comment from '../components/layout/Comment'
+
 const UserInfo = () => {
   const [article, setArticle] = useState({})
   const [comment, setComment] = useState([])
   const router = useRouter();
   const userId= router.query.id
-  console.log(userId)
+
   const getArticle = async() => {
    const articlePage = await APIfetcher('get',`/article/${userId}`
    //,{params:{userId}}
    )
    setArticle(articlePage)
-   console.log(article)
   }
 
   const getComment = async() => {
@@ -21,7 +22,6 @@ const UserInfo = () => {
     //,{params:{userId}}
     )
     setComment(comments)
-    console.log(comments)
    }
 
   useEffect(()=>{
@@ -32,12 +32,11 @@ const UserInfo = () => {
   return (
     <div>
       {article.by}
+      {article.descendants}
+      {article.title}
       {/* {article.text} */}
       {comment.map((item,idx)=>(
-        <div key={idx}>
-          {item.by}
-          {item.text}
-        </div>
+        <Comment key={idx} data={item}/>
       ))}
     </div>
   )

@@ -1,4 +1,4 @@
-import React,{useState,useEffect, useRef} from 'react'
+import React,{useState,useEffect, useRef, useContext} from 'react'
 import {dataFetcher} from '../dataFetcher'
 import APIfetcher from '../APIfetcher'
 import PageView from './components/layout/pageView'
@@ -6,6 +6,7 @@ import PageDetail from './components/layout/pageDetail'
 import Sort from './components/layout/Sort'
 import useInfiniteScroll from './hooks/useInfiniteScroll'
 import loadContent from './hooks/loadContent'
+import {PageTypeContext} from './contexts/viewType.js'
 
 const Show = (props) => {
   const [content, setContent] = useState([])
@@ -13,11 +14,7 @@ const Show = (props) => {
   const fetchMore = useRef(null)
   const intersecting = useInfiniteScroll(fetchMore)
   
-  const [pageType, setPageType] = useState(true);
-
-  const toggleView = () => {
-    setPageType(!pageType)
-  }
+  const [{isDetail}, toggleView] =useContext(PageTypeContext)
 
   const getContent = async() => {
     const newContents = await APIfetcher ('get','/show/content/scroll', {
@@ -30,11 +27,12 @@ const Show = (props) => {
   }
   useEffect (() => {
     if(intersecting && endScroll) getContent()
-    console.log(intersecting)
 
   },[intersecting,content])
+
+  console.log('show render')
   return(
-    <div className="container">
+    <div>
     <Sort />
     {/* {isLoading 
     ?
@@ -45,16 +43,15 @@ const Show = (props) => {
       <PageView key={item.id} ms={item} idx={idx+1}/>
     ))}
     </>}     */}
-    <button onClick={toggleView}>
-        {pageType? "자세히" :"일반"}
-      </button>
-    {pageType? content.map((item,idx)=>(
+    <div className='container'>
+    {isDetail? content.map((item,idx)=>(
       <PageDetail key={idx} ms={item} idx={idx+1}/>
       )):
       content.map((item,idx)=>(
         <PageView key={idx} ms={item} idx={idx+1}/>
         ))
       }
+    </div>
     <div ref={fetchMore} />
   </div>
   )

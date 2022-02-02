@@ -4,7 +4,7 @@ import HeadTag from './components/Head'
 import Header from './components/layout/Header'
 import Nav from './components/layout/Nav'
 import {ThemeProvider} from './contexts/theme'
-
+import { PageTypeProvider } from './contexts/viewType'
 const App = ({Component, pageProps}) => 
   {
     
@@ -16,7 +16,9 @@ const App = ({Component, pageProps}) =>
         <Nav />
         <div id='backdrop' />
         <div id='userModal' />
-        <Component {...pageProps}/>
+        <PageTypeProvider>
+          <Component {...pageProps}/>
+        </PageTypeProvider>
       </ThemeProvider>
     </>
     

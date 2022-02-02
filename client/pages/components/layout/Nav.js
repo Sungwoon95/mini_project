@@ -17,7 +17,6 @@ const Nav = () => {
     {path:'/ask', sectionName:'Ask'},
     {path:'/jobs', sectionName:'Jobs'},
   ]
-  console.log(router)
   return(
     <div className={`${isDark ? "Dark": "Light"}_Nav container`}>
       <ul className={`Nav__list--wrap ${router.asPath === "/" ? "home" : "side"}`}>

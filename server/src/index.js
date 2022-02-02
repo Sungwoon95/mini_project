@@ -3,7 +3,7 @@ import cors from 'cors';
 import { storyRoute } from './routes/contents.js';
 import {idRoutes, contentRoutes, scrollRoutes} from './routes/ids.js'
 import {userRoutes} from './routes/users.js'
-import {articleRoutes,commentRoutes} from './routes/article.js'
+import {articleRoutes,commentRoutes, commentReplyRoutes} from './routes/article.js'
 import axios from 'axios'
 
 const app = express()
@@ -16,7 +16,7 @@ app.use(cors({
   credentials:true
 }))
 
-const routes = [...idRoutes, ...contentRoutes,...storyRoute, ...scrollRoutes, ...userRoutes, ...articleRoutes,...commentRoutes]
+const routes = [...idRoutes, ...contentRoutes,...storyRoute, ...scrollRoutes, ...userRoutes, ...articleRoutes,...commentRoutes,...commentReplyRoutes]
 routes.forEach(({method, route, handler})=>{
   app[method](route,handler)
 })

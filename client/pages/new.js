@@ -36,7 +36,7 @@ const New = () => {
   },[intersecting,content])
   return(
   <div className="container">
-    <Sort />
+    <Sort onClick={toggleView}/>
     {/* {isLoading 
     ?
     <p>Loadgin</p> 
@@ -46,9 +46,6 @@ const New = () => {
       <PageView key={item.id} ms={item} idx={idx+1}/>
     ))}
     </>}     */}
-    <button onClick={toggleView}>
-        {pageType? "자세히" :"일반"}
-      </button>
     {!isLoading 
     ? 
     '로딩중임미다.'

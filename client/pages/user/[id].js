@@ -12,7 +12,6 @@ const UserInfo = () => {
     //,{params:{userId}}
     )
     setUser(userPage)
-    console.log(user.id)
   }
 
   useEffect(()=>{
